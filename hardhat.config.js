@@ -1,4 +1,8 @@
 require("@nomiclabs/hardhat-waffle");
+require('dotenv').config();
+const fs = require('fs')
+const privateKey = fs.readFileSync('.secret').toString();
+
 
 // task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 // 	const accounts = await hre.ethers.getSigners();
@@ -17,11 +21,11 @@ module.exports = {
     },
     mumbai: {
       url: `https://polygon-mumbai.infura.io/v3/${projectId}`,
-      accounts: []
+      accounts: [privateKey]
     },
     mainnet: {
       url: `https://mainnet.infura.io/v3/${projectId}`,
-      accounts: []
+      accounts: [privateKey]
     }
   },
 	solidity: "0.8.4",
